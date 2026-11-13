@@ -15,12 +15,12 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp",
-        policy =>
-        {
-            policy.WithOrigins("http://localhost:5173")
-                  .AllowAnyHeader()
-                  .AllowAnyMethod();
-        });
+    policy =>
+    {
+        policy.AllowAnyOrigin() // <-- Permitir cualquier origen (Netlify, celular, etc)
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
 });
 
 builder.Services.AddControllers();
